@@ -1,6 +1,7 @@
 ﻿using assignment.enums;
 using System;
 using System.ComponentModel;
+using System.Drawing;
 using System.Net;
 using System.Security;
 using System.Text;
@@ -127,10 +128,44 @@ namespace assignment
             //form of Enum.
             //Create Variable from previous Enum to Add multible
             //Permission
-            Permissions permissions = new Permissions();
-            permissions = Permissions.execute | Permissions.read | Permissions.write;
-            Console.WriteLine(permissions);
+            //Permissions permissions = new Permissions();
+            //permissions = Permissions.execute | Permissions.read | Permissions.write;
+            //Console.WriteLine(permissions);
 
+            #endregion
+            #region q4
+            //Create an enum called "Colors" with the basic colors(Red, Green, Blue)
+            //as its members.Write a C# program that takes a color name as input from
+            //the user and displays a message indicating whether the input color is a
+            //primary color or not.
+            Colors color = new Colors();
+            bool isparsed;
+            object color2;
+            do
+            {
+                Console.WriteLine("enter the color :");
+                isparsed = Enum.TryParse(typeof(Colors), Console.ReadLine(), true, out color2);
+                if (isparsed == false)
+                {
+                    Console.WriteLine("not prime color");
+                    break;
+                }
+                else
+                {
+                    color = (Colors)color2;
+                    switch (color)
+                    {
+                        case Colors.green:
+                        case Colors.red:
+                        case Colors.blue:
+                            Console.WriteLine("prime coclor");
+                            break;
+                    }
+                }
+            }
+            while (isparsed == false);
+            
+         
             #endregion
         }
     }
