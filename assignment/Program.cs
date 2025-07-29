@@ -2,6 +2,7 @@
 using System;
 using System.ComponentModel;
 using System.Net;
+using System.Security;
 using System.Text;
 using System.Xml.Linq;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -82,6 +83,10 @@ namespace assignment
             //Weekdays weekdays = new Weekdays();
             //weekdays = (Weekdays)127;
             //Console.WriteLine(weekdays);
+            //foreach (Weekdays day in Enum.GetValues(typeof(Weekdays)))
+            //{
+            //    Console.WriteLine(day);
+            //}
             #endregion
             #region q2
             //Create an enum called "Season" with the four seasons (Spring,
@@ -90,32 +95,42 @@ namespace assignment
             //corresponding month range for that season. Note range for seasons(
             //spring march to may, summer june to august, autumn September to
             //November, winter December to February)
-            object season;
-            bool isparsed;
-            do
-            {
-                Console.WriteLine("enter the season : ");
-                isparsed = Enum.TryParse(typeof(Season), Console.ReadLine(), true, out season);
-                if (isparsed == false)
-                    Console.WriteLine("invalid season try again ");
-            } while ( isparsed == false );
-            Season season1 = new Season();
-            season1 =(Season)season;
-            switch (season1)
-            {
-                case Season.spring:
-                    Console.WriteLine("the range is march to may");
-                    break;
-                case Season.winter:
-                    Console.WriteLine("the range is december to feburary");
-                    break;
-                case Season.summer:
-                    Console.WriteLine("the range is june to august ");
-                    break;
-                case Season.autumn:
-                    Console.WriteLine("the range is september to november ");
-                    break;
-            }
+            //object season;
+            //bool isparsed;
+            //do
+            //{
+            //    Console.WriteLine("enter the season : ");
+            //    isparsed = Enum.TryParse(typeof(Season), Console.ReadLine(), true, out season);
+            //    if (isparsed == false)
+            //        Console.WriteLine("invalid season try again ");
+            //} while ( isparsed == false );
+            //Season season1 = new Season();
+            //season1 =(Season)season;
+            //switch (season1)
+            //{
+            //    case Season.spring:
+            //        Console.WriteLine("the range is march to may");
+            //        break;
+            //    case Season.winter:
+            //        Console.WriteLine("the range is december to feburary");
+            //        break;
+            //    case Season.summer:
+            //        Console.WriteLine("the range is june to august ");
+            //        break;
+            //    case Season.autumn:
+            //        Console.WriteLine("the range is september to november ");
+            //        break;
+            //}
+            #endregion
+            #region q3
+            //Assign the following Permissions(Read, write, Delete, Execute) in a
+            //form of Enum.
+            //Create Variable from previous Enum to Add multible
+            //Permission
+            Permissions permissions = new Permissions();
+            permissions = Permissions.execute | Permissions.read | Permissions.write;
+            Console.WriteLine(permissions);
+
             #endregion
         }
     }
