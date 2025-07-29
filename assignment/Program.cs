@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Net;
 using System.Security;
 using System.Text;
+using System.Transactions;
 using System.Xml.Linq;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -138,34 +139,57 @@ namespace assignment
             //as its members.Write a C# program that takes a color name as input from
             //the user and displays a message indicating whether the input color is a
             //primary color or not.
-            Colors color = new Colors();
-            bool isparsed;
-            object color2;
+            //Colors color = new Colors();
+            //bool isparsed;
+            //object color2;
+            //do
+            //{
+            //    Console.WriteLine("enter the color :");
+            //    isparsed = Enum.TryParse(typeof(Colors), Console.ReadLine(), true, out color2);
+            //    if (isparsed == false)
+            //    {
+            //        Console.WriteLine("not prime color");
+            //        break;
+            //    }
+            //    else
+            //    {
+            //        color = (Colors)color2;
+            //        switch (color)
+            //        {
+            //            case Colors.green:
+            //            case Colors.red:
+            //            case Colors.blue:
+            //                Console.WriteLine("prime coclor");
+            //                break;
+            //        }
+            //    }
+            //}
+            //while (isparsed == false);
+
+
+            #endregion
+            #region enum task
+            Food? food = new Food();
+            object result;
+            bool isvalid = false;
             do
             {
-                Console.WriteLine("enter the color :");
-                isparsed = Enum.TryParse(typeof(Colors), Console.ReadLine(), true, out color2);
-                if (isparsed == false)
+                
+                Console.WriteLine("enter the food ");
+                string input = Console.ReadLine();
+
+                if (Enum.TryParse(typeof(Food), input, out result) && Enum.IsDefined(typeof(Food), input))
                 {
-                    Console.WriteLine("not prime color");
-                    break;
+                    food = (Food)result;
+                    Console.WriteLine($"you food is {food}");
+                    isvalid = true;
                 }
                 else
-                {
-                    color = (Colors)color2;
-                    switch (color)
-                    {
-                        case Colors.green:
-                        case Colors.red:
-                        case Colors.blue:
-                            Console.WriteLine("prime coclor");
-                            break;
-                    }
-                }
-            }
-            while (isparsed == false);
-            
-         
+                    Console.WriteLine("invalid input");
+
+            } while (isvalid==false );
+          
+
             #endregion
         }
     }
