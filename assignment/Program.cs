@@ -1,6 +1,10 @@
 ﻿using assignment.enums;
+using System;
 using System.ComponentModel;
 using System.Net;
+using System.Text;
+using System.Xml.Linq;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace assignment
 {
@@ -75,9 +79,43 @@ namespace assignment
             //Create an enum called "WeekDays" with the days of the week
             //(Monday to Sunday) as its members.Then, write a C# program that
             //prints out all the days of the week using this enum.
-            Weekdays weekdays = new Weekdays();
-            weekdays = (Weekdays)127;
-            Console.WriteLine(weekdays);
+            //Weekdays weekdays = new Weekdays();
+            //weekdays = (Weekdays)127;
+            //Console.WriteLine(weekdays);
+            #endregion
+            #region q2
+            //Create an enum called "Season" with the four seasons (Spring,
+            //Summer, Autumn, Winter) as its members.Write a C# program that
+            //takes a season name as input from the user and displays the
+            //corresponding month range for that season. Note range for seasons(
+            //spring march to may, summer june to august, autumn September to
+            //November, winter December to February)
+            object season;
+            bool isparsed;
+            do
+            {
+                Console.WriteLine("enter the season : ");
+                isparsed = Enum.TryParse(typeof(Season), Console.ReadLine(), true, out season);
+                if (isparsed == false)
+                    Console.WriteLine("invalid season try again ");
+            } while ( isparsed == false );
+            Season season1 = new Season();
+            season1 =(Season)season;
+            switch (season1)
+            {
+                case Season.spring:
+                    Console.WriteLine("the range is march to may");
+                    break;
+                case Season.winter:
+                    Console.WriteLine("the range is december to feburary");
+                    break;
+                case Season.summer:
+                    Console.WriteLine("the range is june to august ");
+                    break;
+                case Season.autumn:
+                    Console.WriteLine("the range is september to november ");
+                    break;
+            }
             #endregion
         }
     }
